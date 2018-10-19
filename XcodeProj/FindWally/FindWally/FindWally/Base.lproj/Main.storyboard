@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zt2-AX-dfI">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FindWally" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BrS-cB-2R5">
+                                <rect key="frame" x="0.0" y="217" width="375" height="450"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="450" id="vjC-cB-yQn"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pW7-JC-mYm">
+                                <rect key="frame" x="156.5" y="94" width="62" height="30"/>
+                                <state key="normal" title="開始辨識"/>
+                                <connections>
+                                    <action selector="startRecognizing:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ugE-v2-D4a"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4S-wN-3It">
+                                <rect key="frame" x="119.5" y="144" width="136" height="30"/>
+                                <state key="normal" title="Import From Device"/>
+                                <connections>
+                                    <action selector="fromDeviceButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tdP-0L-AZE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZk-v7-3Q5">
+                                <rect key="frame" x="119" y="179" width="137" height="30"/>
+                                <state key="normal" title="Import From Gallery"/>
+                                <connections>
+                                    <action selector="fromGalleryButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9ws-bv-zCk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BrS-cB-2R5" secondAttribute="bottom" id="51M-Z2-pPb"/>
+                            <constraint firstItem="A4S-wN-3It" firstAttribute="top" secondItem="pW7-JC-mYm" secondAttribute="bottom" constant="20" id="CMj-OJ-jsS"/>
+                            <constraint firstItem="yZk-v7-3Q5" firstAttribute="centerX" secondItem="A4S-wN-3It" secondAttribute="centerX" id="Kfb-1J-57j"/>
+                            <constraint firstItem="pW7-JC-mYm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="N69-ha-qHF"/>
+                            <constraint firstItem="BrS-cB-2R5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="R0X-sX-EZq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BrS-cB-2R5" secondAttribute="trailing" id="T5Q-MV-M3e"/>
+                            <constraint firstItem="A4S-wN-3It" firstAttribute="centerX" secondItem="pW7-JC-mYm" secondAttribute="centerX" id="bOO-qE-Uh9"/>
+                            <constraint firstItem="pW7-JC-mYm" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="k2h-S8-nMV"/>
+                            <constraint firstItem="yZk-v7-3Q5" firstAttribute="top" secondItem="A4S-wN-3It" secondAttribute="bottom" constant="5" id="wIz-qF-aux"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="lDu-yL-gJ7"/>
+                    <connections>
+                        <outlet property="imageView" destination="BrS-cB-2R5" id="DfX-qT-fWL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="132.68365817091455"/>
+        </scene>
+        <!--Gallery View Controller-->
+        <scene sceneID="HMt-f3-Swx">
+            <objects>
+                <viewController storyboardIdentifier="GalleryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Alu-uC-6VO" customClass="GalleryViewController" customModule="FindWally" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JVe-lz-cid">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rPw-2I-82O">
+                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EzN-Et-cto">
+                                    <size key="itemSize" width="150" height="150"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WallyCell" id="Hky-eK-dAP" customClass="WallyCollectionViewCell" customModule="FindWally" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="20" width="150" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Zil-28-ncq">
+                                                    <rect key="frame" x="0.0" y="109" width="150" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CN7-pH-y0f">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Zil-28-ncq" secondAttribute="bottom" constant="20" id="0W5-ef-ERm"/>
+                                            <constraint firstItem="Zil-28-ncq" firstAttribute="centerX" secondItem="Hky-eK-dAP" secondAttribute="centerX" id="8Ie-ck-Bx6"/>
+                                            <constraint firstItem="Zil-28-ncq" firstAttribute="leading" secondItem="Hky-eK-dAP" secondAttribute="leading" id="K7J-uN-nMH"/>
+                                            <constraint firstAttribute="trailing" secondItem="Zil-28-ncq" secondAttribute="trailing" id="QVB-4Y-Cs3"/>
+                                            <constraint firstAttribute="trailing" secondItem="CN7-pH-y0f" secondAttribute="trailing" id="W9V-h2-TCr"/>
+                                            <constraint firstItem="CN7-pH-y0f" firstAttribute="top" secondItem="Hky-eK-dAP" secondAttribute="top" id="Z0x-Gj-dyy"/>
+                                            <constraint firstItem="CN7-pH-y0f" firstAttribute="leading" secondItem="Hky-eK-dAP" secondAttribute="leading" id="kfJ-99-ona"/>
+                                            <constraint firstAttribute="bottom" secondItem="CN7-pH-y0f" secondAttribute="bottom" id="vcH-0Z-Tam"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="Zil-28-ncq" id="HeR-ab-V1C"/>
+                                            <outlet property="wallyImageView" destination="CN7-pH-y0f" id="u08-so-qVf"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Alu-uC-6VO" id="xO9-jy-iFb"/>
+                                    <outlet property="delegate" destination="Alu-uC-6VO" id="zJK-7J-PGh"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="k09-bw-reZ" firstAttribute="bottom" secondItem="rPw-2I-82O" secondAttribute="bottom" id="AUX-52-xKg"/>
+                            <constraint firstItem="rPw-2I-82O" firstAttribute="leading" secondItem="k09-bw-reZ" secondAttribute="leading" id="Eru-hW-iXZ"/>
+                            <constraint firstItem="rPw-2I-82O" firstAttribute="top" secondItem="k09-bw-reZ" secondAttribute="top" constant="50" id="fh5-VZ-IaP"/>
+                            <constraint firstItem="k09-bw-reZ" firstAttribute="trailing" secondItem="rPw-2I-82O" secondAttribute="trailing" id="mKo-sh-4TW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="k09-bw-reZ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sFT-s0-VoM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1816.8" y="132.68365817091455"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="X4O-yb-C0u">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zt2-AX-dfI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EBV-lH-Q7M">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="nUj-gm-iCj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ieC-F4-tyP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="385" y="133"/>
+        </scene>
+    </scenes>
+</document>
