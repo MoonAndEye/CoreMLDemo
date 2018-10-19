@@ -13,14 +13,23 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var transferedImageView: UIImageView!
     
+    let mlmodel = StarryStyle()
     
-    let mlmodel = KlimtAdeleBlochBauer()
+    let mlmodelKlimt = KlimtAdeleBlochBauer()
+    
+    let mlmodelSunflowers = Sunflowers()
+    
+    let mlmodelMonet = Monet()
 //    let mlmodel = MyStyleTransfer500_20180928()
 //    let mlmodel2 = MyStyleTransfer100_20180928()
     
+    var modelArray = [Any]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        transferedImageView.image = UIImage(named: "Content1")
         
+        modelArray = [mlmodel, mlmodelKlimt, mlmodelSunflowers]
     }
     
     func pixelBuffer(from image: UIImage) -> CVPixelBuffer? {
@@ -59,7 +68,7 @@ class ViewController: UIViewController {
         return pixelBuffer
     }
     
-    func imageTransfer(_ image: UIImage) {
+    func imageTransferStarry(_ image: UIImage) {
         
 //        let numStyles  = 2
 //        let styleIndex = 1
@@ -88,6 +97,64 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    func imageTransferKlimt(_ image: UIImage) {
+        
+        // 如果只有一個 style 就用這一R段
+        let styleArray = try? MLMultiArray(shape: [1] as [NSNumber], dataType: .double)
+        styleArray?[0] = 1.0
+        
+        if let image = pixelBuffer(from: transferedImageView.image!) {
+            do {
+                let predictionOutput = try mlmodelKlimt.prediction(image: image, index: styleArray!)
+                
+                let ciImage = CIImage(cvPixelBuffer: predictionOutput.stylizedImage)
+                let tempContext = CIContext(options: nil)
+                let tempImage = tempContext.createCGImage(ciImage, from: CGRect(x: 0, y: 0, width: CVPixelBufferGetWidth(predictionOutput.stylizedImage), height: CVPixelBufferGetHeight(predictionOutput.stylizedImage)))
+                transferedImageView.image = UIImage(cgImage: tempImage!)
+            } catch let error as NSError {
+                print("CoreML Model Error: \(error)")
+            }
+        }
+    }
+    
+    func imageTransferSunflowers(_ image: UIImage) {
+        // 如果只有一個 style 就用這一R段
+        let styleArray = try? MLMultiArray(shape: [1] as [NSNumber], dataType: .double)
+        styleArray?[0] = 1.0
+        
+        if let image = pixelBuffer(from: transferedImageView.image!) {
+            do {
+                let predictionOutput = try mlmodelSunflowers.prediction(image: image, index: styleArray!)
+                
+                let ciImage = CIImage(cvPixelBuffer: predictionOutput.stylizedImage)
+                let tempContext = CIContext(options: nil)
+                let tempImage = tempContext.createCGImage(ciImage, from: CGRect(x: 0, y: 0, width: CVPixelBufferGetWidth(predictionOutput.stylizedImage), height: CVPixelBufferGetHeight(predictionOutput.stylizedImage)))
+                transferedImageView.image = UIImage(cgImage: tempImage!)
+            } catch let error as NSError {
+                print("CoreML Model Error: \(error)")
+            }
+        }
+    }
+    
+    func imageTransferMonet(_ image: UIImage) {
+        // 如果只有一個 style 就用這一R段
+        let styleArray = try? MLMultiArray(shape: [1] as [NSNumber], dataType: .double)
+        styleArray?[0] = 1.0
+        
+        if let image = pixelBuffer(from: transferedImageView.image!) {
+            do {
+                let predictionOutput = try mlmodelMonet.prediction(image: image, index: styleArray!)
+                
+                let ciImage = CIImage(cvPixelBuffer: predictionOutput.stylizedImage)
+                let tempContext = CIContext(options: nil)
+                let tempImage = tempContext.createCGImage(ciImage, from: CGRect(x: 0, y: 0, width: CVPixelBufferGetWidth(predictionOutput.stylizedImage), height: CVPixelBufferGetHeight(predictionOutput.stylizedImage)))
+                transferedImageView.image = UIImage(cgImage: tempImage!)
+            } catch let error as NSError {
+                print("CoreML Model Error: \(error)")
+            }
+        }
+    }
 
     @IBAction func transferButtonTapped(_ sender: Any) {
         
@@ -102,6 +169,27 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func sunflowerTransferButtonTapped(_ sender: Any) {
+        guard let image = transferedImageView.image else { return }
+        imageTransferSunflowers(image)
+    }
+    
+    @IBAction func styleStarryButtonTapped(_ sender: Any) {
+        guard let image = transferedImageView.image else { return }
+        imageTransferStarry(image)
+    }
+    
+    @IBAction func monetButtonTapped(_ sender: Any) {
+        guard let image = transferedImageView.image else { return }
+        imageTransferMonet(image)
+    }
+    
+    @IBAction func klimtButtonTapped(_ sender: Any) {
+        guard let image = transferedImageView.image else { return }
+        imageTransferKlimt(image)
+    
+    }
+    
 }
 
 extension ViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
@@ -110,7 +198,6 @@ extension ViewController: UINavigationControllerDelegate, UIImagePickerControlle
         
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             transferedImageView.image = image
-            imageTransfer(image)
         }
         
         dismiss(animated:true, completion: nil)

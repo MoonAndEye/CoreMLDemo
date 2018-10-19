@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		731B00D3217A314A00E6C616 /* StarryStyle.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 731B00D2217A314A00E6C616 /* StarryStyle.mlmodel */; };
+		731B00D5217A342E00E6C616 /* Monet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 731B00D4217A342E00E6C616 /* Monet.mlmodel */; };
 		73A22894216DDB8700E745E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A22893216DDB8700E745E6 /* AppDelegate.swift */; };
 		73A22896216DDB8700E745E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A22895216DDB8700E745E6 /* ViewController.swift */; };
 		73A22899216DDB8700E745E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73A22897216DDB8700E745E6 /* Main.storyboard */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		731B00D2217A314A00E6C616 /* StarryStyle.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = StarryStyle.mlmodel; sourceTree = "<group>"; };
+		731B00D4217A342E00E6C616 /* Monet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Monet.mlmodel; path = ../../../TuriCreate/StyleTransfer/Monet/Monet.mlmodel; sourceTree = "<group>"; };
 		73A22890216DDB8700E745E6 /* StyleTransferDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StyleTransferDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73A22893216DDB8700E745E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73A22895216DDB8700E745E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 				73A228A7216DE24A00E745E6 /* MyStyleTransfer100_20180928.mlmodel */,
 				73A228C7217068C200E745E6 /* KlimtAdeleBlochBauer.mlmodel */,
 				73A228C9217068CB00E745E6 /* Sunflowers.mlmodel */,
+				731B00D2217A314A00E6C616 /* StarryStyle.mlmodel */,
+				731B00D4217A342E00E6C616 /* Monet.mlmodel */,
 			);
 			path = StyleTransferDemo;
 			sourceTree = "<group>";
@@ -147,12 +153,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				731B00D5217A342E00E6C616 /* Monet.mlmodel in Sources */,
 				73A22896216DDB8700E745E6 /* ViewController.swift in Sources */,
 				73A228A8216DE24A00E745E6 /* MyStyleTransfer100_20180928.mlmodel in Sources */,
 				73A228A6216DDBCA00E745E6 /* MyStyleTransfer500_20180928.mlmodel in Sources */,
 				73A228C8217068C300E745E6 /* KlimtAdeleBlochBauer.mlmodel in Sources */,
 				73A228CA217068CB00E745E6 /* Sunflowers.mlmodel in Sources */,
 				73A22894216DDB8700E745E6 /* AppDelegate.swift in Sources */,
+				731B00D3217A314A00E6C616 /* StarryStyle.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
