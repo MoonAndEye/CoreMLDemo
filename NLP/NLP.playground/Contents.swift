@@ -28,11 +28,11 @@ import NaturalLanguage
 // 德文
 //Es ist nun schon lange her, da lebte ein König, dessen Weisheit im ganzen Lande berühmt war. Nichts blieb ihm unbekannt und es war, als ob ihm Nachricht von den verborgensten Dingen durch die Luft zugetragen würde.
 
-let regognizer = NLLanguageRecognizer()
+let recognizer = NLLanguageRecognizer()
 let testStr = "sila berhati hati ruang di platform"
-regognizer.processString(testStr)
-let lang = regognizer.dominantLanguage
-let hypothesis = regognizer.languageHypotheses(withMaximum: 4)
+recognizer.processString(testStr)
+let lang = recognizer.dominantLanguage
+let hypothesis = recognizer.languageHypotheses(withMaximum: 4)
 
 
 
@@ -42,7 +42,7 @@ let hypothesis = regognizer.languageHypotheses(withMaximum: 4)
 // 斷詞測試
 // Document, paragraph, sentence, word
 let tokenizer = NLTokenizer(unit: .word)
-let str = "下一個講者的演講一定很精釆，對機器學習有興趣的朋友請留下來聽"
+let str = "추운지방에서살던학자가더운지방으로여행을갔어요"
 let strRange = str.startIndex ..< str.endIndex
 tokenizer.string = str
 // tokens 會輸出 Range<Set>,

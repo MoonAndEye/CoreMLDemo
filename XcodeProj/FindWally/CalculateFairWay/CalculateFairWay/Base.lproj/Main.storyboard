@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CalculateFairWay" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6aU-cS-aM9">
+                                <rect key="frame" x="0.0" y="267" width="375" height="400"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="Lem-E1-OwG"/>
+                                </constraints>
+                            </imageView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="Qlp-V2-8Xd">
+                                <rect key="frame" x="18" y="109" width="339" height="31"/>
+                                <connections>
+                                    <action selector="saturateValueChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="Bfb-Sy-pEq"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="2" translatesAutoresizingMaskIntoConstraints="NO" id="ExW-G6-b5z">
+                                <rect key="frame" x="18" y="201" width="339" height="31"/>
+                                <connections>
+                                    <action selector="contrastValueChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="9Pk-6w-sGv"/>
+                                </connections>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Qlp-V2-8Xd" secondAttribute="bottom" constant="528" id="1Sf-MZ-vz1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ExW-G6-b5z" secondAttribute="bottom" constant="436" id="9eF-aK-4lZ"/>
+                            <constraint firstItem="ExW-G6-b5z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="BB5-D7-qgf"/>
+                            <constraint firstItem="6aU-cS-aM9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="E5l-bs-XCG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qlp-V2-8Xd" secondAttribute="trailing" constant="20" id="ETa-Lb-gl9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6aU-cS-aM9" secondAttribute="trailing" id="KRB-SA-h1U"/>
+                            <constraint firstItem="ExW-G6-b5z" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="181" id="UzI-d4-wKI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6aU-cS-aM9" secondAttribute="bottom" id="cDz-9E-UoU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ExW-G6-b5z" secondAttribute="trailing" constant="20" id="fqi-5S-p1H"/>
+                            <constraint firstItem="Qlp-V2-8Xd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ogT-bA-dtT"/>
+                            <constraint firstItem="Qlp-V2-8Xd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="89" id="zey-pM-IOc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="contrastBar" destination="ExW-G6-b5z" id="tEU-dL-7En"/>
+                        <outlet property="imageView" destination="6aU-cS-aM9" id="kXR-mR-UeF"/>
+                        <outlet property="saturationBar" destination="Qlp-V2-8Xd" id="VCD-Hf-8XT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
+        </scene>
+    </scenes>
+</document>
