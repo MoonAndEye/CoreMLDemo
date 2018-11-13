@@ -69,6 +69,7 @@ class ViewController: UIViewController {
             let recognizedRect = CGRect(x: realX, y: realY, width: realWidth, height: realHeight)
             
             let reccognizedView = UIView(frame: recognizedRect)
+            
             reccognizedView.backgroundColor = .yellow
             reccognizedView.alpha = 0.7
             
@@ -84,22 +85,22 @@ class ViewController: UIViewController {
         
         guard
             let image = imageView.image,
-            let ciImage = CIImage(image: image)
+            let ciImage = CIImage(image: image),
+            // You can find dected object labels from line 90
+            let userDefined: [String: String] = mlmodel.model.modelDescription.metadata[MLModelMetadataKey.creatorDefinedKey] as? [String : String]
             else { return }
+
         
-//        let userDefined: [String: String] = mlmodel.model.modelDescription.metadata[MLModelMetadataKey.creatorDefinedKey]! as! [String : String]
-//
-        // 如果是多目標識別型的,可以在這裡找 label
-//        let labels = userDefined["classes"]!.components(separatedBy: ",")
-//
-        // 可以決定高於某個信心值才 return, 每個案例不同, 沒有一定的答案
+        _ = userDefined["classes"]!.components(separatedBy: ",")
+        
+        // you can set threshold if you don't want to show the low confidence result
 //        let nmsThreshold = Float(userDefined["non_maximum_suppression_threshold"]!) ?? 0.5
         
         let handler = VNImageRequestHandler(ciImage: ciImage, options: [:])
         
         guard let model = try? VNCoreMLModel(for: mlmodel.model) else { return }
         
-        let vnRequest: VNCoreMLRequest = VNCoreMLRequest(model: model) { (request, error) in
+        let vnRequest: VNCoreMLRequest = VNCoreMLRequest(model: model) { [weak self] (request, error) in
             
             guard let observations = request.results as? [VNRecognizedObjectObservation] else {
                 
@@ -109,13 +110,15 @@ class ViewController: UIViewController {
             
             if observations.count == 0 {
                 
-                self.showAlert()
-                
-                return
+                DispatchQueue.main.async {
+                    self?.showAlert()
+                    return
+                }
             }
             
-            self.drawRect(observations)
-            
+            DispatchQueue.main.async {
+                self?.drawRect(observations)
+            }
         }
         
         vnRequest.imageCropAndScaleOption = .scaleFill
@@ -140,6 +143,7 @@ class ViewController: UIViewController {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = .camera
+            imagePicker.allowsEditing = true
             
             self.present(imagePicker, animated: true, completion: nil)
         }
@@ -170,8 +174,8 @@ extension ViewController: UINavigationControllerDelegate, UIImagePickerControlle
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            imageView.image = image.rotate(radians: Float(-.pi/2.0))
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            imageView.image = image
         }
         
         dismiss(animated:true, completion: nil)
